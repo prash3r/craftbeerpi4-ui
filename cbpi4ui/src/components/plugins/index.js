@@ -35,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const CBPiCard = ({item}) => {
   const classes = useStyles();
   let homepage = true;
-  console.log(item);
-  if (item?.Homepage === "UNKNOWN" ) {
+  if (item["Home-page"] === "UNKNOWN" ) {
     homepage = false;
   }
     return (

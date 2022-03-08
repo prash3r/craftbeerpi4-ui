@@ -14,8 +14,7 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import DeleteDialog from "../util/DeleteDialog";
 import { CloneRecipeDialog } from "./CloneRecipeDialog";
 import { BrewRecipeDialog } from "./BrewRecipeDialog";
-import { CBPiPaddleIcon } from "../util/icons/CBPiSensorIcon";
-
+import { CBPiTankIcon } from "../util/icons/CBPiSensorIcon";
 
 const FermenterRecipeEditor = () => {
   const { id } = useParams();
@@ -71,9 +70,9 @@ const FermenterRecipeEditor = () => {
         <CloneRecipeDialog id={id} open={open} setOpen={setOpen}/>
 
         <IconButton variant="contained" onClick={ferment}>
-          <CBPiPaddleIcon />
+          <CBPiTankIcon />
         </IconButton>
-        <BrewRecipeDialog id={id} open={openferment} setOpen={setOpenferment}/>
+        <BrewRecipeDialog id={id} name={basicData.name} open={openferment} setOpen={setOpenferment}/>
 
         <IconButton variant="contained" onClick={save}>
           <SaveIcon />
