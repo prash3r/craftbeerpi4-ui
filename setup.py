@@ -25,5 +25,5 @@ setup(name='cbpi4gui',
         # If any package contains *.txt or *.rst files, include them:
       '': ['*.txt', '*.rst', '*.yaml'],
       'cbpi4-ui-plugin': ['*','*.txt', '*.rst', '*.yaml']},
-      packages=['cbpi4gui'],
+      packages=['cbpi4ui'],
      )
