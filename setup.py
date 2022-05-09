@@ -14,7 +14,7 @@ with open(os.path.join(os.path.abspath(os.path.dirname(
 
 print(version)
 
-setup(name='cbpi4ui',
+setup(name='cbpi4gui',
       version=version,
       description='CraftBeerPi User Interface',
       author='Manuel Fritsch',
@@ -25,5 +25,5 @@ setup(name='cbpi4ui',
         # If any package contains *.txt or *.rst files, include them:
       '': ['*.txt', '*.rst', '*.yaml'],
       'cbpi4-ui-plugin': ['*','*.txt', '*.rst', '*.yaml']},
-      packages=['cbpi4ui'],
+      packages=['cbpi4gui'],
      )
