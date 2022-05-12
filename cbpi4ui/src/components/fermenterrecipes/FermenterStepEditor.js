@@ -1,6 +1,0 @@
-
-
-const FermenterStepEditor = () => {
-
-    return <>EDITOR</>
-}
