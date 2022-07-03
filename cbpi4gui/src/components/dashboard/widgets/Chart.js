@@ -43,9 +43,11 @@ const Chart = ({ id }) => {
           x: data.time,
           y: data[id],
           type: "scatter",
+		  mode: 'lines',
           line: {
             color: model?.props?.linecolor || "#00FF00",
-            width: 1,
+            width: 2,
+			shape: 'spline'
           },
         },
       ]);

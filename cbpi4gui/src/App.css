@@ -68,3 +68,14 @@ circle{
   -moz-user-select: none;
   -webkit-user-drag: none;
 }
+
+.divgrid {
+  background: #272227;    
+  background-image: url(grid.png);
+  background-attachment: local;
+}
+
+.divnogrid {
+  background: #272227;    
+}
+
