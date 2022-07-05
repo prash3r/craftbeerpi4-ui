@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "./static/css/main.3f73c840.chunk.css",
-    "main.js": "./static/js/main.d6c51f0c.chunk.js",
-    "main.js.map": "./static/js/main.d6c51f0c.chunk.js.map",
+    "main.js": "./static/js/main.cc1affcf.chunk.js",
+    "main.js.map": "./static/js/main.cc1affcf.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.c4860e48.js",
     "runtime-main.js.map": "./static/js/runtime-main.c4860e48.js.map",
     "static/js/2.6dfd6a1b.chunk.js": "./static/js/2.6dfd6a1b.chunk.js",
@@ -12,7 +12,7 @@
     "index.html": "./index.html",
     "static/css/main.3f73c840.chunk.css.map": "./static/css/main.3f73c840.chunk.css.map",
     "static/js/2.6dfd6a1b.chunk.js.LICENSE.txt": "./static/js/2.6dfd6a1b.chunk.js.LICENSE.txt",
-    "static/js/main.d6c51f0c.chunk.js.LICENSE.txt": "./static/js/main.d6c51f0c.chunk.js.LICENSE.txt",
+    "static/js/main.cc1affcf.chunk.js.LICENSE.txt": "./static/js/main.cc1affcf.chunk.js.LICENSE.txt",
     "static/media/CBPi_logo.2fc3a7bc.svg": "./static/media/CBPi_logo.2fc3a7bc.svg",
     "static/media/cbpi.f1a4ae59.png": "./static/media/cbpi.f1a4ae59.png",
     "static/media/cbpi_no_border.5446caa7.png": "./static/media/cbpi_no_border.5446caa7.png",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.c4860e48.js",
     "static/js/2.6dfd6a1b.chunk.js",
     "static/css/main.3f73c840.chunk.css",
-    "static/js/main.d6c51f0c.chunk.js"
+    "static/js/main.cc1affcf.chunk.js"
   ]
 }

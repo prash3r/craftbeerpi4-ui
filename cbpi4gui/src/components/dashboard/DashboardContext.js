@@ -399,7 +399,7 @@ export const Dashboard = ({ width, height , fixdash}) => {
         {state.draggable ? <DashboardWidgetList /> : null}
         <div className={state.draggable ? "divgrid" : "divnogrid"}
           onPointerDown={(e) => {
-			if ((e.clientY + 7) >= e.target.clientHeight) return;  
+			if ((e.clientY ) >= (e.target.getBoundingClientRect().top + e.target.clientHeight)) return;  // on horizontal scroll bar
             actions.setSelected((current) => null);
             actions.setSelectedPath((current) => null);
           }}
