@@ -145,7 +145,7 @@ const Chart = ({ id }) => {
       <IconButton  ref={anchorRef} onClick={()=>setOpen(true)} size="small" variant="contained" style={{ position: "absolute", top: 5, right: 10 }}>
         <MoreVertIcon />
       </IconButton>
-      { loading ? <RotateLeftIcon fontSize="small" style={{ position: "absolute", bottom: 10, right: 10 }} />: ""}
+      { loading ? <RotateLeftIcon fontSize="small" className="rotating" style={{ position: "absolute", bottom: 10, right: 10 }} />: ""}
 
       <Popper  open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
 
