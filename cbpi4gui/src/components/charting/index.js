@@ -74,7 +74,7 @@ const clear_logs = () => {
           </ToggleButtonGroup>
 
           <IconButton onClick={load}>
-            <AutorenewIcon />
+            <AutorenewIcon className={loading ? "rotating-right" : "" }/>
           </IconButton>
           <DeleteDialog
             title="Delete logs"
@@ -133,7 +133,6 @@ const clear_logs = () => {
               },
             }}
           />
-		  { loading ? <RotateLeftIcon className="rotating" fontSize="large" style={{ position: "absolute", bottom: 10, right: 10 }} />: ""}
         </Grid>
       </Grid>
     </>
