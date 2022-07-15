@@ -38,10 +38,94 @@
 }
 
 .flowLeft {stroke-dasharray: 5; animation: dashdrawLeft 5s linear infinite;}
-@keyframes dashdrawLeft {to {stroke-dashoffset: 200;}}
+@keyframes dashdrawLeft {
+	10%, 20% {stroke-dashoffset: 40;}
+	30%, 40% {stroke-dashoffset: 80;}
+	50%, 60% {stroke-dashoffset: 120;}
+	70%, 80% {stroke-dashoffset: 160;}
+	90%, 100% {stroke-dashoffset: 200;}	
+	}
 
 .flowRight {stroke-dasharray: 5; animation: dashdrawRight 5s linear infinite;}
-@keyframes dashdrawRight {to {stroke-dashoffset: -200;}}
+@keyframes dashdrawRight {
+	10%, 20% {stroke-dashoffset: -40;}
+	30%, 40% {stroke-dashoffset: -80;}
+	50%, 60% {stroke-dashoffset: -120;}
+	70%, 80% {stroke-dashoffset: -160;}
+	90%, 100% {stroke-dashoffset: -200;}	
+	}
+
+@-webkit-keyframes rotating-left /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+@keyframes rotating-left {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+}
+.rotating-left {
+  -webkit-animation: rotating-left 2s linear infinite;
+  -moz-animation: rotating-left 2s linear infinite;
+  -ms-animation: rotating-left 2s linear infinite;
+  -o-animation: rotating-left 2s linear infinite;
+  animation: rotating-left 2s linear infinite;
+}
+
+@-webkit-keyframes rotating-right /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating-right {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating-right {
+  -webkit-animation: rotating-right 2s linear infinite;
+  -moz-animation: rotating-right 2s linear infinite;
+  -ms-animation: rotating-right 2s linear infinite;
+  -o-animation: rotating-right 2s linear infinite;
+  animation: rotating-right 2s linear infinite;
+}
 
 circle{
   pointer-events: auto;
@@ -68,3 +152,14 @@ circle{
   -moz-user-select: none;
   -webkit-user-drag: none;
 }
+
+.divgrid {
+  background: #272227;    
+  background-image: url(grid.png);
+  background-attachment: local;
+}
+
+.divnogrid {
+  background: #272227;    
+}
+
