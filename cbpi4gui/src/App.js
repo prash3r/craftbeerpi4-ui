@@ -13,6 +13,7 @@ import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import About from "./components/about";
+import { configapi } from "./components/data/configapi";
 import Upload from "./components/upload";
 import CBPiSystem from "./components/system";
 import {Dashboard2 , FixDashboard} from "./components/dashboard/Dashboard";
@@ -133,9 +134,18 @@ const useStyles = makeStyles((theme) => ({
 const CraftBeerPiApp = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [brewery,setBrewery] = React.useState("CraftBeerPi 4.0");
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+
+  configapi.getone('BREWERY_NAME', (data) => {
+    if (data){
+      setBrewery(data);
+       }
+      });
+  
+  console.log(brewery);
 
   return (
     <div className={classes.root}>
@@ -151,7 +161,7 @@ const CraftBeerPiApp = () => {
                 <div className={classes.title} style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                   <img width={30} src={logo} style={{ marginRight: 10 }} />
                   <Typography component="h1" variant="h4" color="inherit" noWrap>
-                    CraftBeerPi 4.0
+                    {brewery}
                   </Typography>
                 </div>
                 <IconButton color="inherit">
