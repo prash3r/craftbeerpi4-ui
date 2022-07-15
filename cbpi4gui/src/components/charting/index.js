@@ -7,16 +7,19 @@ import Plot from "react-plotly.js";
 import { useSensor } from "../data";
 import { logapi } from "../data/logapi";
 import DeleteDialog from "../util/DeleteDialog";
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 export const Charting = () => {
   const sensors = useSensor();
   const [formats, setFormats] = useState(() => []);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const handleFormat = (event, newFormats) => {
     setFormats(newFormats);
   };
 
   const load = () => {
+	setLoading(true) ;
     logapi.get2(formats, (d) => {
       const temp = [];
       
@@ -29,7 +32,8 @@ export const Charting = () => {
           name: senosr_config.name,
           type: "scatter",
           line: {
-            width: 1,
+            width: 2,
+			shape: 'spline'
           },
         });
 
@@ -38,6 +42,7 @@ export const Charting = () => {
             */
         console.log(`${key}: ${value}`);
       }
+	  setLoading(false);
       setData(temp);
     });
   };
@@ -69,7 +74,7 @@ const clear_logs = () => {
           </ToggleButtonGroup>
 
           <IconButton onClick={load}>
-            <AutorenewIcon />
+            <AutorenewIcon className={loading ? "rotating-right" : "" }/>
           </IconButton>
           <DeleteDialog
             title="Delete logs"
@@ -92,6 +97,7 @@ const clear_logs = () => {
                   color: "#fff",
                 },
               },
+			  uirevision:'true',
               paper_bgcolor: "rgba(0,0,0,0)",
               plot_bgcolor: "rgba(0,0,0,0)",
               margin: {

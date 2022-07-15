@@ -2,7 +2,7 @@ import { IconButton } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import SaveIcon from "@material-ui/icons/Save";
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "../../App.css";
 import { useAlert } from "../alert/AlertProvider";
@@ -366,27 +366,54 @@ export const Dashboard = ({ width, height , fixdash}) => {
 
   };
 
+  // get bounding box of svg
+  const useBBox = () => {
+      const svgRef = useRef();
+      const [svgWidth, setSvgWidth] = useState(undefined);
 
+      const getBoundingBox = useCallback(() => {
+      // if svg not mounted yet, exit
+        if (!svgRef.current)
+              return;
+          // get bbox of content in svg
+          const box = svgRef.current.getBBox();
+          console.log(box);
+          // set width for svg
+          setSvgWidth(box.width + box.x + 20);
+      }, []);
+
+      useLayoutEffect(() => {
+          getBoundingBox();
+      });
+
+      return [svgRef, svgWidth];
+  };
+    
+  const [svgRef, svgWidth] = useBBox();
+    
+  
   return (
     <div>
       
       <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
         {state.draggable ? <DashboardWidgetList /> : null}
-        <div
-          onPointerDown={() => {
+        <div className={state.draggable ? "divgrid" : "divnogrid"}
+          onPointerDown={(e) => {
+			if ((e.clientY ) >= (e.target.getBoundingClientRect().top + e.target.clientHeight)) return;  // on horizontal scroll bar
             actions.setSelected((current) => null);
             actions.setSelectedPath((current) => null);
           }}
           ref={parentRef}
           style={{
             position: "relative",
-            backgroundColor: "#272227",
             width,
             height,
+            overflowX: 'auto',
+			overflowY: 'hidden'
           }}
         >
           {state.elements2.map((value, index) => value.instance)}
-          <svg style={{ position: "absolute", pointerEvents: "none" }} width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
+          <svg ref={svgRef} style={{ position: "absolute", minWidth: svgWidth, pointerEvents: "none" }} width={width} height={height}>
             {state.pathes.map((value) => value.instance)}
           </svg>
           {!fixdash ?

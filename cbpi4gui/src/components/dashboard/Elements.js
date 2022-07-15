@@ -59,7 +59,7 @@ export const DashboardContainer = ({ name, id, index, type }) => {
   };
 
   return (
-    <Draggable disabled={!draggable} onStop={stopDrag} onDrag={handleDrag} bounds="parent" grid={[5, 5]} defaultPosition={{ x, y }}>
+    <Draggable disabled={!draggable} onStop={stopDrag} onDrag={handleDrag} grid={[5, 5]} defaultPosition={{ x, y }}>
       <div onPointerDown={select} style={inputStyle}>
         { typeof type === 'string' ? <div><img className="no-drag" width={model.props?.width} height={model.props?.height}  src={type}/></div> :
         <Widget id={id} width={model.props?.width} height={model.props?.height} />}
