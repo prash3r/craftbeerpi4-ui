@@ -131,7 +131,7 @@ export const DashboardButton = ({ id, width, height }) => {
 
     const power = () => {
       if (model.props?.actor && actor) {
-        if(actor.power)
+        if(actor.power >= 0 && actor.power <=100)
           return actor.power + " %";
       } 
       else {
@@ -153,13 +153,13 @@ export const DashboardButton = ({ id, width, height }) => {
     const handleOpen = () => setOpen(true);
 
     if (action === "yes" && actor) {
-      if (power())
+      if (power()) 
       {
         return (
           <div style={cssStyle}>
             <ButtonGroup>
               <Button disabled={draggable} onClick={toggle} fullWidth variant={btnVariant} color={btnColor}>
-              <div style={size()}> {name()}({power()}) </div>
+              <div style={size()}> {name()} ({power()}) </div>
               </Button>
               <Button disabled={draggable} onClick={handleOpen} color="primary" size="small" aria-label="select merge strategy" aria-haspopup="menu">
                 <MoreVertIcon />
