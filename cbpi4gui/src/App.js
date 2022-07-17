@@ -37,7 +37,6 @@ import RecipeEditor from "./components/recipes/RecipeEditor";
 import FermenterRecipeEditor from "./components/fermenterrecipes/FermenterRecipeEditor";
 import { Charting } from "./components/charting";
 
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -145,8 +144,6 @@ const CraftBeerPiApp = () => {
        }
       });
   
-  console.log(brewery);
-
   return (
     <div className={classes.root}>
       <CssBaseline />

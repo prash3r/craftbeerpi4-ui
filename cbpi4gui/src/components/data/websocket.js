@@ -9,8 +9,10 @@ class CBPiWebSocket {
     }
     
     connection_lost(e) {
-        console.log(this.alert)
-        setTimeout(() => {
+        console.log(this.alert);
+        this.onMessageCallback({topic: 'connection/lost'});      
+        this.onMessageCallback({topic: 'notifiaction', id: '1', title: 'Server Error', message: 'Lost Connection', type: 'error', action: []});
+          setTimeout(() => {
             this.open();
           }, 5000);
     }
@@ -33,6 +35,7 @@ class CBPiWebSocket {
   
     on_open() {
       console.log("WS OPEN")
+      this.onMessageCallback(this.alert)
     }
   
     on_message(e) {

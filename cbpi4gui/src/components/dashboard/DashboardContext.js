@@ -166,13 +166,13 @@ export const DashboardProvider = ({ children }) => {
     }
 
     if(direction === "leftExpression"){
-        console.log("update expression left : " + data)
-        console.log(temp_pathes[index])
+        //console.log("update expression left : " + data)
+        //console.log(temp_pathes[index])
         temp_pathes[index].condition.leftExpression = data;
     }
     if(direction === "rightExpression"){
-      console.log("update expression right : " + data)
-      console.log(temp_pathes[index])
+      //console.log("update expression right : " + data)
+      //console.log(temp_pathes[index])
       temp_pathes[index].condition.rightExpression = data;
     }
 
@@ -182,15 +182,15 @@ export const DashboardProvider = ({ children }) => {
   const update_path_condition = (id, dataLeft, dataRight, direction) => {
     const index = pathes.findIndex((e) => e.id === id);
     const temp_pathes = [...pathes];
-    console.log("data temp_pathes : ")
-    console.log(temp_pathes)
+    //console.log("data temp_pathes : ")
+    //console.log(temp_pathes)
     if(direction === "left"){
-      console.log("update condition : " + id + ", direction : " + direction + ", data : " + dataLeft)
+      //console.log("update condition : " + id + ", direction : " + direction + ", data : " + dataLeft)
       temp_pathes[index].condition.left = dataLeft;
     }
     if(direction === "right"){
-      console.log("update condition : " + id + ", direction : " + direction + ", data : " + dataRight)  
-      console.log("!!!! DEBUG CONDITION !!!! " + temp_pathes[index].condition)
+      //console.log("update condition : " + id + ", direction : " + direction + ", data : " + dataRight)  
+      //console.log("!!!! DEBUG CONDITION !!!! " + temp_pathes[index].condition)
       temp_pathes[index].condition.right = dataRight;
     }
     setPathes([...temp_pathes]);
@@ -235,8 +235,8 @@ export const DashboardProvider = ({ children }) => {
     const conditionInitData = {left: [], right: [], leftExpression:"", rightExpression:"" };
     //setPathes([...pathes, { id, path: data, instance: <Path id={id} coordinates={data} condition={conditionInitData} max_x={width} max_y={height} /> }]);
     setPathes([...pathes, { id, path: data, condition: conditionInitData, instance: <Path id={id} coordinates={data} condition={conditionInitData} max_x={width} max_y={height} /> }]);
-    console.log("DEBUG PAHT ADD : ")
-    console.log(pathes);
+    //console.log("DEBUG PAHT ADD : ")
+    //console.log(pathes);
   };
 
   const get_data = (id) => {
@@ -250,8 +250,8 @@ export const DashboardProvider = ({ children }) => {
   const save = (DashboardID = 1) => {
     let e = elements2.map((value) => ({ id: value.id, name: value.name, x: value.x, y: value.y, type: value.type, props: { ...value.props } }));
     let p = pathes.map((value) => ({ id: value.id, coordinates: value.coordinates, condition: value.condition }));
-    console.log("DEBUG CONDITION SAVED")
-    console.log(p);
+    //console.log("DEBUG CONDITION SAVED")
+    //console.log(p);
     dashboardapi.save(DashboardID, { elements: e, pathes: p }, () => {
       
     });
@@ -377,7 +377,7 @@ export const Dashboard = ({ width, height , fixdash}) => {
               return;
           // get bbox of content in svg
           const box = svgRef.current.getBBox();
-          console.log(box);
+          //console.log(box);
           // set width for svg
           setSvgWidth(box.width + box.x + 20);
       }, []);
