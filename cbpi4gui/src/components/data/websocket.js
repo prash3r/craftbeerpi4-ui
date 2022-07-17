@@ -11,7 +11,7 @@ class CBPiWebSocket {
     connection_lost(e) {
         console.log(this.alert);
         this.onMessageCallback({topic: 'connection/lost'});      
-        this.onMessageCallback({topic: 'notifiaction', id: '1', title: 'Server Error', message: 'Lost Connection', type: 'error', action: []});
+        this.onMessageCallback({topic: 'notifiaction', id: '1', title: 'Lost Connection to Server', message: 'Cbpi server seems to be down', type: 'error', action: []});
           setTimeout(() => {
             this.open();
           }, 5000);
