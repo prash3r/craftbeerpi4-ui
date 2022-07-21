@@ -36,10 +36,14 @@ export const DashboardProvider = ({ children }) => {
   const [dashboardX, setDashboardX] = useState(1);
   const [maxdashboard, setMaxdashboard] = useState(4);
   const [initialdashboard, setInitialdashboard] = useState(0) 
-
+  const [slowPipeAnimation, setSlowPipeAnimation] = useState( true );
+  
   useEffect(() => {
     dashboardapi.getcurrentdashboard((data) => {
       setInitialdashboard(data);
+    });
+    dashboardapi.getpipeanimation((data) => {
+      setSlowPipeAnimation( (data === 'Yes') ? true : false);
     });
   }, []);
   
@@ -272,7 +276,8 @@ export const DashboardProvider = ({ children }) => {
       selectedPath,
       maxdashboard,
       dashboardX,
-      initialdashboard
+      initialdashboard,
+      slowPipeAnimation	  
     },
     actions: {
       setCurrent,
@@ -297,6 +302,7 @@ export const DashboardProvider = ({ children }) => {
       setSelectedPath,
       setDashboardX,
       save,
+	  setSlowPipeAnimation
     },
   };
 

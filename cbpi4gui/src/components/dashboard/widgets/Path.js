@@ -14,7 +14,7 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
   const [flowRight, setFlowRight] = useState(false)
   const [rightExpression, SetFlowExpRight] = useState(false); // rightExpression and useState Hook for SetFlowRightExp
   const [leftExpression, SetFlowExpLeft] = useState(false);   // leftExpression and useState Hook for SetFlowleftExp
-
+  
   const p = state.pathes.find((e) => e.id === id);
 
   useEffect(() => {
@@ -266,13 +266,17 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
   };
 
   const glow = () => (is_acktive() ? "10%" : "0%");
-  const is_acktive = () => actions.is_selected(id);
-  const animation = classNames({ flowLeft: flowLeft }, { flowRight: flowRight });
+  const is_acktive = () => draggable ? actions.is_selected(id) : false;
+  // animation only if not draggable
+  const animation = draggable ? "" : classNames({ flowLeft: flowLeft }, { flowRight: flowRight });
+  const animationFast = draggable ? "" : classNames({ flowLeftFast: flowLeft }, { flowRightFast: flowRight });
+  
+  
   return (
     <>
       <g key={id}>
         <path d={gen_path()} id="1" fill="none" stroke="#9A9A9A" strokeLinejoin="round" strokeWidth={stroke} pointerEvents="stroke"></path>
-        <path className={animation} strokeLinejoin="round" d={gen_path()} fill="none" stroke="#4A4A4A" strokeWidth={stroke - 2} strokeMiterlimit="10" pointerEvents="stroke"></path>
+        <path className={state.slowPipeAnimation ? animation : animationFast} strokeLinejoin="round" d={gen_path()} fill="none" stroke="#4A4A4A" strokeWidth={stroke - 2} strokeMiterlimit="10" pointerEvents="stroke"></path>
         <path onPointerDown={(e) => select(e)} d={gen_path()} fill="none" strokeOpacity={glow()} stroke="blue" strokeLinejoin="round" strokeWidth={stroke + 10} pointerEvents="stroke"></path>
         {is_acktive() ? handle() : ""}
         {is_acktive() ? render_handles() : ""}
