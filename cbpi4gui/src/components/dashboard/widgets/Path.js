@@ -14,11 +14,16 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
   const [flowRight, setFlowRight] = useState(false)
   const [rightExpression, SetFlowExpRight] = useState(false); // rightExpression and useState Hook for SetFlowRightExp
   const [leftExpression, SetFlowExpLeft] = useState(false);   // leftExpression and useState Hook for SetFlowleftExp
+  const [animation, setAnimation] = useState("");
+  const [animationFast, setAnimationFast] = useState("");
   
   const p = state.pathes.find((e) => e.id === id);
 
   useEffect(() => {
-    
+	if (state.draggable) {
+		return;
+	}
+	
     const actor_cache = actor.reduce((obj, item) => {
       obj[item.id] = item.state;
       return obj;
@@ -26,7 +31,7 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
 
         // Add a cache of actor states by name, used for calculate the expression
     const actor_cacheFromName = actor.reduce((obj, item) => {
-     // console.log("DEBUG : Item : " + item.name + " State : " + item.state)
+      // console.log("DEBUG : Item : " + item.name + " State : " + item.state);
       obj[item.name] = item.state;
       return obj;
     }, {});  
@@ -67,7 +72,6 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
       bStateAction = false;
       var boolExpressionRight = p.condition.rightExpression;
       const actorsId =p.condition.rightExpression.split("\"");
-      
       console.log("On check l'expression RIGHT : "+ boolExpressionRight);
 
       // For each part of the string, we check if this is an actor name, if so we replace the actor name by the resulting state.  
@@ -86,10 +90,9 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
       {
         bStateAction = eval(boolExpressionRight);
         console.log("right, Eval de : " + boolExpressionRight + "  Result = " + bStateAction.toString());
-        console.log("EvalRightAnimation : " + bStateAction.toString());
-        if(bStateAction ===true || bStateAction === false){   
+        if(bStateAction.toString() === "true" || bStateAction.toString() === "false"){   
           console.log("On anime a right ..." + bStateAction);     
-          setFlowRight(bStateAction, true);
+          setFlowRight(bStateAction.toString() === "true" ? true : false);
         } 
 
       }
@@ -109,12 +112,12 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
        
        // For each part of the string, we check if this is an actor name, if so we replace the actor name by the resulting state.  
        
-              for(var actorId of actorsId)
+       for(var actorId of actorsId)
        {
          // Check if we process an actorId
          if(typeof actor_cacheFromName[actorId] === "boolean") 
          {            
-          boolExpressionLeft =  boolExpressionLeft.replace('\"'+ actorId + '\"', actor_cacheFromName[actorId].toString());
+           boolExpressionLeft =  boolExpressionLeft.replace('\"'+ actorId + '\"', actor_cacheFromName[actorId].toString());
            console.log("Eval left after replace : " + boolExpressionLeft)
          }
        }
@@ -124,10 +127,9 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
        {
          bStateAction = eval(boolExpressionLeft);
          console.log("Left, Eval de : " + boolExpressionLeft + "  Result = " + bStateAction.toString());
-         console.log("EvalLeftAnimation : " + bStateAction.toString());
-         if(bStateAction ===true || bStateAction === false){      
+         if(bStateAction.toString() === "true" || bStateAction.toString() === "false"){      
            console.log("On anime a left ..." + bStateAction);
-           setFlowLeft(bStateAction, true);
+           setFlowLeft(bStateAction.toString() === "true" ? true : false);
          }
        } 
        catch (error) 
@@ -136,7 +138,7 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
        }
      }
 
-  }, [actor]);
+  }, [actor, state.draggable]);
 
 
   const draggable = state.draggable;
@@ -267,10 +269,12 @@ export const Path = ({ id, coordinates, condition = {left: [], right: [], leftEx
 
   const glow = () => (is_acktive() ? "10%" : "0%");
   const is_acktive = () => draggable ? actions.is_selected(id) : false;
-  // animation only if not draggable
-  const animation = draggable ? "" : classNames({ flowLeft: flowLeft }, { flowRight: flowRight });
-  const animationFast = draggable ? "" : classNames({ flowLeftFast: flowLeft }, { flowRightFast: flowRight });
   
+  useEffect(() => {
+  // animation only if not draggable
+    setAnimation(state.draggable ? "" : classNames({ flowLeft: flowLeft }, { flowRight: flowRight }));
+    setAnimationFast(state.draggable ? "" : classNames({ flowLeftFast: flowLeft }, { flowRightFast: flowRight }));
+  }, [state.draggable, flowLeft, flowRight]);
   
   return (
     <>

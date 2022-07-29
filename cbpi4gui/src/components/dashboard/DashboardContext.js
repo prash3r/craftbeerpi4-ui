@@ -371,7 +371,14 @@ export const Dashboard = ({ width, height , fixdash}) => {
       }
 
   };
-
+  
+  const refresh_dashboard = () => {
+    actions.setDraggable(!state.draggable);
+//	if (state.draggable) {
+//       window.location.reload();
+//	}
+  };
+  
   // get bounding box of svg
   const useBBox = () => {
       const svgRef = useRef();
