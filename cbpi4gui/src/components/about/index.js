@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 import logo from "../../images/cbpi.png";
 import { useCBPi } from "../data";
-import paypal_logo from './paypal.png';
+import paypal_logo from "./paypal.png";
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
@@ -68,7 +68,7 @@ const About = () => {
         <input type="hidden" name="hosted_button_id" value="QA2DR6FKNF6VN" />
         <input
           type="image"
-          src="/paypal.png"
+          src={paypal_logo}
           border="0"
           width="200px"
           name="submit"
