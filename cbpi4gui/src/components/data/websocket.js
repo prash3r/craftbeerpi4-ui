@@ -9,8 +9,10 @@ class CBPiWebSocket {
     }
     
     connection_lost(e) {
-        console.log(this.alert)
-        setTimeout(() => {
+        console.log(this.alert);
+        this.onMessageCallback({topic: 'connection/lost'});      
+        this.onMessageCallback({topic: 'notifiaction', id: '1', title: 'Connection to Server', message: 'Cbpi server seems to be down', type: 'error', action: []});
+          setTimeout(() => {
             this.open();
           }, 5000);
     }
@@ -33,6 +35,8 @@ class CBPiWebSocket {
   
     on_open() {
       console.log("WS OPEN")
+      this.onMessageCallback(this.alert)
+      this.onMessageCallback({topic: 'notifiaction', id: '2', title: 'Connection to Server', message: 'Established connection to Cbpi server', type: 'success', action: []});
     }
   
     on_message(e) {

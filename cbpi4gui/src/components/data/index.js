@@ -41,11 +41,10 @@ export const CBPiProvider = ({ children }) => {
   const [fermenter, setFermenter] = useState([]);
   const [fermenterlogic, setFermenterLogic] = useState([]);
   const [fermentersteps, setFermenterSteps] = useState([]);
+  const [connection, setConnection] = useState(false);
 
   const onMessage = useCallback((data) => {
     //console.log("WS", data);
-
-    //!!!!!!!!!!!!!!!!!!!!!! Add Fermenterstepupdate to cbpi server
     switch (data.topic) {
       case "kettleupdate":
         setKettle(() => data.data);
@@ -73,8 +72,13 @@ export const CBPiProvider = ({ children }) => {
       case "sensorupdate":
         setSensors(() => data.data);
         break;
+      case "connection/success":
+          setConnection(true);
+          break;
+      case "connection/lost":
+          setConnection(false);
+          break;
       case "notifiaction":
-        
         a.show(data.id, data.title, data.message, data.type, data.action);
         break;
       default:
@@ -111,6 +115,7 @@ export const CBPiProvider = ({ children }) => {
       setStepTypes(Object.values(data.step.types));
       setStepTypesFermenter(Object.values(data.fermenter.steptypes));
       setAuth(true);
+      setConnection(true);
     });
   }, []);
 
@@ -153,7 +158,7 @@ export const CBPiProvider = ({ children }) => {
 
   const value = {
     state: { sensors, version, codename, actors, logic, kettle, fermenter, fermenterlogic, auth, plugins, temp, sensorData, 
-             actorTypes, sensorTypes, config, mashProfile, fermentersteps, FermenterProfile, mashBasic, stepTypes, stepTypesFermenter },
+             actorTypes, sensorTypes, config, mashProfile, fermentersteps, FermenterProfile, mashBasic, stepTypes, stepTypesFermenter, connection },
     actions: {
       delete_kettle,
       add_kettle,
@@ -188,6 +193,7 @@ export const useCBPi = (Context) => {
   const value = useMemo(() => {
     return {
       state,
+      connection: state.connection,
       version: state.version,
       codename: state.codename,
       kettle: state.kettle,
@@ -249,3 +255,5 @@ export const useSensorType = (name = null) => {
   }, [sensorTypes, name]);
   return value;
 };
+
+
