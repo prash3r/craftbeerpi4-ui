@@ -79,6 +79,17 @@ const getcurrentdashboard = (callback_susscess = () => {}, callback_failed = () 
     });
 };
 
+const getpipeanimation = (callback_susscess = () => {}, callback_failed = () => {}) => {
+  axios
+    .get("/dashboard/slowPipeAnimation" )
+    .then(function (response) {
+      callback_susscess(response.data);
+    })
+    .catch(function (error) {
+      callback_failed();
+    });
+};
+
 export const dashboardapi = {
   save,
   get,
@@ -86,5 +97,6 @@ export const dashboardapi = {
   dashboardnumbers,
   setcurrentdashboard,
   getcurrentdashboard,
-  clear
+  clear,
+  getpipeanimation
 }

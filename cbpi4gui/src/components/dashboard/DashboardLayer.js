@@ -84,7 +84,7 @@ const DashboardLayer = () => {
         onPointerDown={(e) => e.stopPropagation()}
         className="box"
         style={{
-          width: 200,
+          width: 240,
           overflow: "hidden",
           fontFamily: "JetBrains Mono",
           backgroundColor: "#2c282e",
@@ -226,7 +226,7 @@ const PathSettings = () => {
   const item = state.pathes.find((e) => e.id === selected_id);
 
   // Add a TextField for adding the booleanExpression
-    var helperTextExpression = "sample expression (\"\" are mandatory for identifying actors): (\"actor1\" && \"actor2\") || (\"actor2\" && \"actor3\") \n don't forget the quote";
+    var helperTextExpression = <>sample expression ("" are mandatory for identifying actors): ("actor1" && "actor2") || ("actor2" && "actor3") <br /> don't forget the quote<br /><br /></>
    
 
   return (

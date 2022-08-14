@@ -37,6 +37,12 @@
   }
 }
 
+.flowLeftFast {stroke-dasharray: 5; animation: dashdrawLeftFast 5s linear infinite;}
+@keyframes dashdrawLeftFast {to {stroke-dashoffset: 200;}}
+
+.flowRightFast {stroke-dasharray: 5; animation: dashdrawRightFast 5s linear infinite;}
+@keyframes dashdrawRightFast {to {stroke-dashoffset: -200;}}
+
 .flowLeft {stroke-dasharray: 5; animation: dashdrawLeft 5s linear infinite;}
 @keyframes dashdrawLeft {
 	10%, 20% {stroke-dashoffset: 40;}
