@@ -9,7 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import React from "react";
+import React, {useRef, useLayoutEffect, useState} from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import About from "./components/about";
@@ -36,6 +36,7 @@ import FermenterRecipes from "./components/fermenterrecipes";
 import RecipeEditor from "./components/recipes/RecipeEditor";
 import FermenterRecipeEditor from "./components/fermenterrecipes/FermenterRecipeEditor";
 import { Charting } from "./components/charting";
+
 
 const drawerWidth = 240;
 
@@ -102,11 +103,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
 
     height: "100vh",
-    overflow: "auto",
+//    overflow: "auto",
   },
   container: {
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(4),
+    position: "absolute",
+//	top: "64px",
+	bottom: 0,
+	overflowY: "auto",
   },
   paper: {
     padding: theme.spacing(2),
@@ -132,8 +137,10 @@ const useStyles = makeStyles((theme) => ({
 
 const CraftBeerPiApp = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [brewery,setBrewery] = React.useState("CraftBeerPi 4.0");
+  const navBarRef = useRef();
+  const [appBarHeight, setAppBarHeight] = useState(64);
+  const [open, setOpen] = useState(false);
+  const [brewery,setBrewery] = useState("CraftBeerPi 4.0");
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -144,13 +151,26 @@ const CraftBeerPiApp = () => {
        }
       });
   
+  useLayoutEffect(() => {
+    const updateNavBarHeight = () => {
+      if (!navBarRef.current)
+        return;
+      const newHeight = navBarRef.current.clientHeight;
+//	  console.log("Navbar height = " + newHeight);
+      setAppBarHeight(newHeight);
+    };
+    window.addEventListener("resize", updateNavBarHeight);
+    updateNavBarHeight();
+    return () => window.removeEventListener("resize", updateNavBarHeight);
+  }, []);
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
       <Router>
         <Switch>
           <PrivateRoute path="/">
-            <AppBar position="absolute" className={classes.appBar}>
+            <AppBar ref={navBarRef}  position="absolute" className={classes.appBar}>
               <Toolbar className={classes.toolbar}>
                 <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} className={classes.menuButton}>
                   <MenuIcon />
@@ -158,7 +178,7 @@ const CraftBeerPiApp = () => {
                 <div className={classes.title} style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                   <img width={30} src={logo} style={{ marginRight: 10 }} />
                   <Typography component="h1" variant="h4" color="inherit" noWrap>
-                    {brewery}
+                    CraftBeerPi 4.0
                   </Typography>
                 </div>
                 <IconButton color="inherit">
@@ -175,7 +195,7 @@ const CraftBeerPiApp = () => {
             <main className={classes.content}>
               <div className={classes.appBarSpacer} />
 
-              <Container maxWidth={false} className={classes.container}>
+              <Container maxWidth={false} className={classes.container} style={{ top: appBarHeight }}>
                 <Route exact path="/">
                   <Dashboard2 />
                 </Route>
