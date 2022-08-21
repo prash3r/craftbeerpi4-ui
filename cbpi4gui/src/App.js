@@ -178,7 +178,7 @@ const CraftBeerPiApp = () => {
                 <div className={classes.title} style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
                   <img width={30} src={logo} style={{ marginRight: 10 }} />
                   <Typography component="h1" variant="h4" color="inherit" noWrap>
-                    CraftBeerPi 4.0
+                    {brewery}
                   </Typography>
                 </div>
                 <IconButton color="inherit">
