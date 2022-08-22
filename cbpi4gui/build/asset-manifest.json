@@ -1,27 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.6d91035e.chunk.css",
-    "main.js": "./static/js/main.2282c1cc.chunk.js",
-    "main.js.map": "./static/js/main.2282c1cc.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.b7ae7dad.js",
-    "runtime-main.js.map": "./static/js/runtime-main.b7ae7dad.js.map",
-    "static/js/2.b8eafa8e.chunk.js": "./static/js/2.b8eafa8e.chunk.js",
-    "static/js/2.b8eafa8e.chunk.js.map": "./static/js/2.b8eafa8e.chunk.js.map",
+    "main.css": "./static/css/main.def8a717.css",
+    "main.js": "./static/js/main.ce29a922.js",
+    "static/media/cbpi_pattern.png": "./static/media/cbpi_pattern.ec6e8cb29cbfc9c6bb41.png",
+    "static/media/cbpi.png": "./static/media/cbpi.f1a4ae594af1e1df335b.png",
+    "static/media/cbpi_no_border.png": "./static/media/cbpi_no_border.5446caa7c8efc97bdcc1.png",
+    "static/media/paypal.png": "./static/media/paypal.86be4c59b08d77ee715d.png",
+    "static/media/CBPi_logo.svg": "./static/media/CBPi_logo.7d1627f10ee89c38bad0ce0acd279943.svg",
+    "static/media/tank2.svg": "./static/media/tank2.891ce17091e46c74c1157a9c7013ea70.svg",
+    "static/media/kettle.svg": "./static/media/kettle.77e9dd6425b5f8f52bbf9fb5e82777c0.svg",
     "index.html": "./index.html",
-    "static/css/main.6d91035e.chunk.css.map": "./static/css/main.6d91035e.chunk.css.map",
-    "static/js/2.b8eafa8e.chunk.js.LICENSE.txt": "./static/js/2.b8eafa8e.chunk.js.LICENSE.txt",
-    "static/media/CBPi_logo.7d1627f1.svg": "./static/media/CBPi_logo.7d1627f1.svg",
-    "static/media/cbpi.f1a4ae59.png": "./static/media/cbpi.f1a4ae59.png",
-    "static/media/cbpi_no_border.5446caa7.png": "./static/media/cbpi_no_border.5446caa7.png",
-    "static/media/cbpi_pattern.ec6e8cb2.png": "./static/media/cbpi_pattern.ec6e8cb2.png",
-    "static/media/kettle.77e9dd64.svg": "./static/media/kettle.77e9dd64.svg",
-    "static/media/paypal.86be4c59.png": "./static/media/paypal.86be4c59.png",
-    "static/media/tank2.891ce170.svg": "./static/media/tank2.891ce170.svg"
+    "main.def8a717.css.map": "./static/css/main.def8a717.css.map",
+    "main.ce29a922.js.map": "./static/js/main.ce29a922.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.b7ae7dad.js",
-    "static/js/2.b8eafa8e.chunk.js",
-    "static/css/main.6d91035e.chunk.css",
-    "static/js/main.2282c1cc.chunk.js"
+    "static/css/main.def8a717.css",
+    "static/js/main.ce29a922.js"
   ]
 }

@@ -5,9 +5,9 @@
   "proxy": "http://localhost:8000",
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts --max-old-space-size=4096 start",
-    "build": "react-scripts --expose-gc --max-old-space-size=4096 build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired --max-old-space-size=4096 start",
+    "build": "react-app-rewired --expose-gc --max-old-space-size=4096 build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -41,7 +41,7 @@
     "react-inlinesvg": "^2.2.2",
     "react-plotly.js": "^2.5.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-select": "^4.3.1",
     "react-smooth-dnd": "^0.11.1",
     "react-split-pane": "^0.1.92",
@@ -67,5 +67,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
   }
 }
