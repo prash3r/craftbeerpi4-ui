@@ -1,3 +1,4 @@
+import axios from "axios";
 class CBPiWebSocket {
 
     
@@ -36,6 +37,7 @@ class CBPiWebSocket {
     on_open() {
       console.log("WS OPEN")
       this.onMessageCallback(this.alert)
+      axios.get("/actor/ws_update")
       this.onMessageCallback({topic: 'notifiaction', id: '2', title: 'Connection to Server', message: 'Established connection to Cbpi server', type: 'success', action: []});
     }
   
